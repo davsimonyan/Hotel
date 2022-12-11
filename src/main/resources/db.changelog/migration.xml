@@ -1,0 +1,93 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+   http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="simonyan" id="initus">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="user"/>
+            </not>
+        </preConditions>
+        <createTable tableName="user">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_type" type="ENUM('USER','ADMIN')" defaultValue="USER"/>
+            <column name="is_enable" type="INT(1)" defaultValue="0"/>
+        </createTable>
+
+        <createTable tableName="room">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="number" type="INT(1)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="rating" type="INT(1)"/>
+            <column name="room_type" type="ENUM('SINGLE','DOUBLE','TRIPLE')" defaultValue="SINGLE"/>
+            <column name="price" type="double"/>
+            <column name="status" type="ENUM('FREE','BUSY')" defaultValue="FREE"/>
+            <column name="user_email" type="VARCHAR(255)"/>
+        </createTable>
+
+        <createTable tableName="rating">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"
+                             foreignKeyName="user_rating"
+                             references="user(id)"/>
+            </column>
+            <column name="room_id" type="BIGINT">
+                <constraints nullable="false"
+                             foreignKeyName="room_rating"
+                             references="room(id)"/>
+            </column>
+            <column name="ratings" type="INT(1)" defaultValue="0"/>
+        </createTable>
+    </changeSet>
+
+        <changeSet author="simonyan" id="initbook">
+                <preConditions onFail="MARK_RAN">
+                    <not>
+                        <tableExists tableName="book"/>
+                    </not>
+                </preConditions>
+                <createTable tableName="book">
+                    <column name="id" type="BIGINT" autoIncrement="true">
+                        <constraints primaryKey="true"/>
+                    </column>
+                    <column name="user_id" type="BIGINT">
+                        <constraints nullable="false"
+                                     foreignKeyName="book_user"
+                                     references="user(id)"/>
+                    </column>
+                    <column name="room_id" type="BIGINT">
+                        <constraints nullable="false"
+                                     foreignKeyName="book_room"
+                                     references="room(id)"/>
+                    </column>
+                    <column name="input_date" type="DATE 'MM/DD/YYYY'"/>
+                    <column name="exit_date" type="DATE 'MM/DD/YYYY'"/>
+                </createTable>
+            </changeSet>
+
+
+</databaseChangeLog>
