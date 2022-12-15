@@ -1,6 +1,8 @@
 package am.itspace.hotel.endpoint;
 
 import am.itspace.hotel.dto.BookDto;
+import am.itspace.hotel.service.BookService;
+import am.itspace.hotel.service.RoomService;
 import am.itspace.hotel.service.impl.RoomServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,16 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class BookEndpoint {
 
-    private final RoomServiceImpl roomServiceImpl;
+    private final BookService bookService;
 
     @PostMapping("/book")
     public ResponseEntity<?> roomBook(@RequestBody BookDto bookDto) {
-        roomServiceImpl.userBook(bookDto);
+        bookService.userBook(bookDto);
         return ResponseEntity.ok(HttpStatus.OK);
     }
     @DeleteMapping("/book/delete")
     public ResponseEntity<?> roomBookDelete(@RequestBody BookDto bookDto) {
-        roomServiceImpl.userBookDelete(bookDto);
+        bookService.userBookDelete(bookDto);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 

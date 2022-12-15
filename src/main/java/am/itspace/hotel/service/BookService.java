@@ -4,6 +4,8 @@ import am.itspace.hotel.dto.BookDto;
 
 public interface BookService {
 
-    BookDto book(BookDto bookDto);
+    void userBook(BookDto bookDto);
+
+    void userBookDelete(BookDto bookDto);
 
 }

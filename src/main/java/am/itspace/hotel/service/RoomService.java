@@ -18,8 +18,5 @@ public interface RoomService {
 
     RoomDto findById(int id);
 
-    void userBook(BookDto bookDto);
-
-    void userBookDelete(BookDto bookDto);
 
 }

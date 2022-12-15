@@ -2,7 +2,7 @@ package am.itspace.hotel.endpoint;
 
 
 import am.itspace.hotel.dto.RatingDto;
-import am.itspace.hotel.service.impl.RatingServiceImpl;
+import am.itspace.hotel.service.RatingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,13 +16,13 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class RatingEndpoint {
 
-    private final RatingServiceImpl ratingServiceImpl;
+    private final RatingService ratingService;
 
 
     @PostMapping("/rating")
     public ResponseEntity<?> roomRating(@Valid
                                         @RequestBody RatingDto ratingDto) {
-        ratingServiceImpl.rating(ratingDto);
+        ratingService.rating(ratingDto);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 }

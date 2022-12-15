@@ -42,23 +42,6 @@ public class UserServiceImpl implements UserService {
 
     }
 
-//    public ResponseEntity<?> login(@RequestBody UserAuthDto userAuthDto){
-//        Optional<User> byEmail = userRepository.findByEmail(userAuthDto.getEmail());
-//        if (byEmail.isPresent()) {
-//            User user = byEmail.get();
-//            if (passwordEncoder.matches(userAuthDto.getPassword(), user.getPassword())) {
-//                return ResponseEntity.ok(UserAuthResponseDto.builder()
-//                        .token(jwtTokenUtil.generateToken(user.getEmail()))
-//                        .user(userMapper.toDto(user))
-//                        .build()
-//                );
-//            }
-//        }
-//        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-//
-//    }
-
-
 
     public void removeById(int id) {
         userRepository.deleteById(id);

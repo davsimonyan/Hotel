@@ -54,30 +54,5 @@ public class RoomServiceImpl implements RoomService {
         }
     }
 
-    public void userBook(BookDto bookDto) {
-            Room room = roomRepository.findById(bookDto.getRoomId()).orElseThrow(EntityNotFoundException::new);
-            User user = userRepository.findById(bookDto.getUserId()).orElseThrow(EntityNotFoundException::new);
-            if (room.getStatus().equals(Status.FREE)) {
-                bookServiceImpl.book(bookDto);
-                room.setUserEmail(user.getEmail());
-                room.setStatus(Status.BUSY);
-                roomRepository.save(room);
-            } else {
-                throw new EntityNotFoundException("invalidate command");
-            }
-
-    }
-
-    public void userBookDelete(BookDto bookDto) {
-        Room room = roomRepository.findById(bookDto.getRoomId()).orElseThrow(EntityNotFoundException::new);
-        User user = userRepository.findById(bookDto.getUserId()).orElseThrow(EntityNotFoundException::new);
-        if (room.getStatus().equals(Status.BUSY)) {
-            room.setUserEmail(null);
-            room.setStatus(Status.FREE);
-            roomRepository.save(room);
-        } else {
-            throw new EntityNotFoundException("invalidate command");
-        }
-    }
 
 }
