@@ -1,8 +1,7 @@
 package am.itspace.hotel.repository;
 
 
-import am.itspace.hotel.entiti.Book;
-import am.itspace.hotel.entiti.Room;
+import am.itspace.hotel.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookRepository extends JpaRepository<Book, Integer> {

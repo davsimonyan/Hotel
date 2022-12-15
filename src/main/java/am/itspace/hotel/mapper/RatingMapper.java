@@ -1,7 +1,7 @@
 package am.itspace.hotel.mapper;
 
 import am.itspace.hotel.dto.RatingDto;
-import am.itspace.hotel.entiti.Rating;
+import am.itspace.hotel.entity.Rating;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

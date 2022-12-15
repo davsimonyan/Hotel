@@ -1,4 +1,4 @@
-package am.itspace.hotel.entiti;
+package am.itspace.hotel.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "rating")
@@ -21,7 +23,9 @@ public class Rating {
     private int id;
     private int userId;
     private int roomId;
-    @Max(value = 5)
-    private int ratings;
+    @Min(value = 1, message = "Value should be greater then equal to 20")
+    @Max(value = 5, message = "Value should be less then equal to 180")
+    @NotNull
+    private Integer rating;
 
 }

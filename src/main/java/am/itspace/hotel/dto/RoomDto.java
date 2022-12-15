@@ -1,7 +1,7 @@
 package am.itspace.hotel.dto;
 
-import am.itspace.hotel.entiti.enums.RoomType;
-import am.itspace.hotel.entiti.enums.Status;
+import am.itspace.hotel.entity.enums.RoomType;
+import am.itspace.hotel.entity.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

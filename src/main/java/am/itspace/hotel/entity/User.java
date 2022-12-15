@@ -1,6 +1,6 @@
-package am.itspace.hotel.entiti;
+package am.itspace.hotel.entity;
 
-import am.itspace.hotel.entiti.enums.UserType;
+import am.itspace.hotel.entity.enums.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

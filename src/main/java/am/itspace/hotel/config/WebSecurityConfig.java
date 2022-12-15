@@ -1,6 +1,6 @@
 package am.itspace.hotel.config;
 
-import am.itspace.hotel.entiti.enums.UserType;
+import am.itspace.hotel.entity.enums.UserType;
 import am.itspace.hotel.security.CurrentUserDetailServiceImpl;
 import am.itspace.hotel.security.JWTAuthenticationTokenFilter;
 import am.itspace.hotel.security.JwtAuthenticationEntryPoint;
@@ -35,9 +35,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/room").hasAuthority(UserType.ADMIN.name())
-                .antMatchers("/book").authenticated()
-                .antMatchers("/user/auth").permitAll()
+                .antMatchers("/user").hasAuthority(UserType.ADMIN.name())
+                .antMatchers("/user/{id}").hasAuthority(UserType.ADMIN.name())
+                .antMatchers("/room/add").hasAuthority(UserType.ADMIN.name())
+                .antMatchers("/roomUpdate").hasAuthority(UserType.ADMIN.name())
+                .antMatchers("/room/{id}").hasAuthority(UserType.ADMIN.name())
+                .antMatchers("/book").hasAnyAuthority(UserType.ADMIN.name(),UserType.USER.name())
+                .antMatchers("/book/delete").hasAnyAuthority(UserType.ADMIN.name(),UserType.USER.name())
+                .antMatchers("/rating").hasAuthority(UserType.USER.name())
                 .anyRequest().permitAll();
 
         http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);

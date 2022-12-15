@@ -1,4 +1,4 @@
-package am.itspace.hotel.entiti;
+package am.itspace.hotel.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,8 +19,8 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int user_id;
-    private int room_id;
+    private int userId;
+    private int roomId;
     private LocalDate inputDate;
     private LocalDate exitDate;
 

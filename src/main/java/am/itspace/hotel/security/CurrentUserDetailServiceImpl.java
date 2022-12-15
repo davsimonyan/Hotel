@@ -1,6 +1,6 @@
 package am.itspace.hotel.security;
 
-import am.itspace.hotel.entiti.User;
+import am.itspace.hotel.entity.User;
 import am.itspace.hotel.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,6 +1,6 @@
 package am.itspace.hotel.repository;
 
-import am.itspace.hotel.entiti.User;
+import am.itspace.hotel.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

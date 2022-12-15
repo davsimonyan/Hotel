@@ -46,6 +46,24 @@
             <column name="user_email" type="VARCHAR(255)"/>
         </createTable>
 
+        <createTable tableName="book">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"
+                             foreignKeyName="book_user"
+                             references="user(id)"/>
+            </column>
+            <column name="room_id" type="BIGINT">
+                <constraints nullable="false"
+                             foreignKeyName="book_room"
+                             references="room(id)"/>
+            </column>
+            <column name="input_date" type="DATE 'MM/DD/YYYY'"/>
+            <column name="exit_date" type="DATE 'MM/DD/YYYY'"/>
+        </createTable>
+
         <createTable tableName="rating">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true"/>
@@ -60,34 +78,10 @@
                              foreignKeyName="room_rating"
                              references="room(id)"/>
             </column>
-            <column name="ratings" type="INT(1)" defaultValue="0"/>
+            <column name="rating" type="INT(1)" defaultValue="0"/>
         </createTable>
-    </changeSet>
 
-        <changeSet author="simonyan" id="initbook">
-                <preConditions onFail="MARK_RAN">
-                    <not>
-                        <tableExists tableName="book"/>
-                    </not>
-                </preConditions>
-                <createTable tableName="book">
-                    <column name="id" type="BIGINT" autoIncrement="true">
-                        <constraints primaryKey="true"/>
-                    </column>
-                    <column name="user_id" type="BIGINT">
-                        <constraints nullable="false"
-                                     foreignKeyName="book_user"
-                                     references="user(id)"/>
-                    </column>
-                    <column name="room_id" type="BIGINT">
-                        <constraints nullable="false"
-                                     foreignKeyName="book_room"
-                                     references="room(id)"/>
-                    </column>
-                    <column name="input_date" type="DATE 'MM/DD/YYYY'"/>
-                    <column name="exit_date" type="DATE 'MM/DD/YYYY'"/>
-                </createTable>
-            </changeSet>
+    </changeSet>
 
 
 </databaseChangeLog>

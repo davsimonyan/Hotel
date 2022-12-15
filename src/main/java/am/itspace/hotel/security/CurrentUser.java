@@ -1,6 +1,6 @@
 package am.itspace.hotel.security;
 
-import am.itspace.hotel.entiti.User;
+import am.itspace.hotel.entity.User;
 import org.springframework.security.core.authority.AuthorityUtils;
 
 public class CurrentUser  extends org.springframework.security.core.userdetails.User {

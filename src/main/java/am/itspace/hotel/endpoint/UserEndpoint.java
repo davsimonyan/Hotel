@@ -3,7 +3,7 @@ package am.itspace.hotel.endpoint;
 import am.itspace.hotel.dto.UserAuthDto;
 import am.itspace.hotel.dto.UserAuthResponseDto;
 import am.itspace.hotel.dto.UserDto;
-import am.itspace.hotel.entiti.User;
+import am.itspace.hotel.entity.User;
 import am.itspace.hotel.mapper.UserMapper;
 import am.itspace.hotel.repository.UserRepository;
 import am.itspace.hotel.service.UserService;
@@ -33,14 +33,8 @@ public class UserEndpoint {
     public ResponseEntity<List<UserDto>> getAllUser() {
         return ResponseEntity.ok(userService.findAll());
     }
-//
-//    @PutMapping("/roomUpdate")
-//    public ResponseEntity<?> createUpdate(@RequestBody RoomDto roomDto) {
-//        Room updateRoom = roomService.update(roomMapper.toEntity(roomDto));
-//        return ResponseEntity.ok(updateRoom);
-//    }
 
-    @PostMapping("/user")
+    @PostMapping("/user/add")
     public ResponseEntity<?> createUser(@RequestBody UserDto userDto) {
         userService.save(userDto);
         return ResponseEntity.ok(HttpStatus.OK);

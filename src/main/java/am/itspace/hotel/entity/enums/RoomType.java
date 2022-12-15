@@ -1,4 +1,4 @@
-package am.itspace.hotel.entiti.enums;
+package am.itspace.hotel.entity.enums;
 
 public enum RoomType {
 

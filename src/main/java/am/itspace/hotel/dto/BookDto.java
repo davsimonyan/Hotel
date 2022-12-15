@@ -15,8 +15,8 @@ import java.time.LocalDate;
 public class BookDto {
 
     private int id;
-    private int user_id;
-    private int room_id;
+    private int userId;
+    private int roomId;
     private LocalDate inputDate;
     private LocalDate exitDate;
 
