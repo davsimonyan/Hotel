@@ -35,14 +35,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/user").hasAuthority(UserType.ADMIN.name())
-                .antMatchers("/user/{id}").hasAuthority(UserType.ADMIN.name())
+//                .antMatchers("/user").permitAll()
+//                .antMatchers("/user/{id}").hasAuthority(UserType.ADMIN.name())
                 .antMatchers("/room/add").hasAuthority(UserType.ADMIN.name())
                 .antMatchers("/roomUpdate").hasAuthority(UserType.ADMIN.name())
                 .antMatchers("/room/{id}").hasAuthority(UserType.ADMIN.name())
                 .antMatchers("/book").hasAnyAuthority(UserType.ADMIN.name(),UserType.USER.name())
                 .antMatchers("/book/delete").hasAnyAuthority(UserType.ADMIN.name(),UserType.USER.name())
                 .antMatchers("/rating").hasAuthority(UserType.USER.name())
+//                .antMatchers("/user/add").permitAll()
+//                .antMatchers("/user/auth").permitAll()
                 .anyRequest().permitAll();
 
         http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);

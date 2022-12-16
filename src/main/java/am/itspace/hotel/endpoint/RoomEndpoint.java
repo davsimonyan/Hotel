@@ -32,7 +32,7 @@ public class RoomEndpoint {
 
     @PostMapping("/room/add")
     public ResponseEntity<?> createRoom(@RequestBody RoomDto roomDto) {
-        Room saveRoom = roomService.save(roomMapper.toEntity(roomDto));
+        RoomDto saveRoom = roomService.save(roomDto);
         return ResponseEntity.ok(saveRoom);
     }
 

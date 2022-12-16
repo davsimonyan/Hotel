@@ -12,4 +12,6 @@ public interface UserService {
 
     void removeById(int id);
 
+    UserDto findById(int id);
+
 }

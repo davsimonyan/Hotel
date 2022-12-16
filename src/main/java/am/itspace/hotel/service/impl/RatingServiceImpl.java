@@ -37,13 +37,13 @@ public class RatingServiceImpl implements RatingService {
                 RoomDto byId = roomServiceImpl.findById(ratingDto.getRoomId());
                 Double id = ratingRepository.ratingAvg(byId.getId());
                 byId.setRating(id.intValue());
-                roomServiceImpl.save(roomMapper.toEntity(byId));
+                roomServiceImpl.save(byId);
             } else {
                 ratingRepository.save(ratingMapper.toEntity(ratingDto));
                 RoomDto byId = roomServiceImpl.findById(ratingDto.getRoomId());
                 Double id = ratingRepository.ratingAvg(byId.getId());
                 byId.setRating(id.intValue());
-                roomServiceImpl.save(roomMapper.toEntity(byId));
+                roomServiceImpl.save(byId);
             }
         }
     }

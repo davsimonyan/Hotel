@@ -1,6 +1,5 @@
 package am.itspace.hotel.service;
 
-import am.itspace.hotel.dto.BookDto;
 import am.itspace.hotel.dto.RoomDto;
 import am.itspace.hotel.entity.Room;
 
@@ -10,7 +9,7 @@ public interface RoomService {
 
     List<RoomDto> findAll();
 
-    Room save(Room room);
+    RoomDto save(RoomDto roomDto);
 
     Room update(Room room);
 

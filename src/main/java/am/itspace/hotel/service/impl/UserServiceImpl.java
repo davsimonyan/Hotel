@@ -7,7 +7,6 @@ import am.itspace.hotel.exception.DuplicateResourceException;
 import am.itspace.hotel.mapper.UserMapper;
 import am.itspace.hotel.repository.UserRepository;
 import am.itspace.hotel.service.UserService;
-import am.itspace.hotel.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,7 +21,6 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
-    private final JwtTokenUtil jwtTokenUtil;
 
 
     public List<UserDto> findAll() {
@@ -45,6 +43,11 @@ public class UserServiceImpl implements UserService {
 
     public void removeById(int id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public UserDto findById(int id) {
+        return null;
     }
 
 
